@@ -1,10 +1,14 @@
-Here are a few notes I made from the traversy vid at https://www.youtube.com/watch?v=SBvmnHTQIPY
+Here are a few notes I made from the traversy vid at https://www.youtube.com/watch?v=SBvmnHTQIPY  
+  
+    
+    
 
 to start:
 
 npm init
 
 npm i express mongoose connect-mongo express-session express-handlebars dotenv method-override moment morgan passport passport-google-oauth20
+
 
 These are the packages and their purpose:
 
@@ -15,10 +19,11 @@ method-override - for put & delete requests from templates
 moment - format dates
 morgan - logging
 passport - authentication
-passport-google-oauth20 - for googles oauth 2.0
-
-
-
+passport-google-oauth20 - for googles oauth 2.0  
+   
+     
+       
+       
 There are some differences between what was in the video and what I found I had to change in order to get it to work.
 Some modules have been updated since, so here's what I changed:
 
@@ -33,10 +38,11 @@ const connectDB = async () => {
 	}
 }
 
-REMOVE 'useFindAndModify: false' and be sure to check your commas
-
-
-
+REMOVE 'useFindAndModify: false' and be sure to check your commas  
+  
+    
+      
+      
 **in routes/auth.js:**
 
 router.get('/logout', (request, response) => {
@@ -52,10 +58,11 @@ router.get('/logout', (request, response) => {
 		}
 		response.redirect('/')
 	})
-}
-
-
-
+}  
+  
+    
+      
+      
 **in app.js:**
 
 const MongoStore = require('connect-mongo')(session)
@@ -71,9 +78,11 @@ app.use(
 CHANGE:
 store: new MongoStore({ mongooseConnection: mongoose.connection})
 TO
-store: MongoStore.create({ mongoUrl: process.env.MONGO_URI})
-
-
+store: MongoStore.create({ mongoUrl: process.env.MONGO_URI})  
+  
+    
+      
+      
 **in app.js**
 
 // Handlebars
